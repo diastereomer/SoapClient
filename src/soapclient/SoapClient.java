@@ -38,7 +38,7 @@ public class SoapClient {
         SOAPConnection soapConnection = soapConnectionFactory.createConnection();
 
         // Send SOAP Message to SOAP Server
-        String url = "http://war2k12devesbz.msigdmz.com:8040/services/UMIntegration";
+        String url = "http://localhost:8040/services/integration";
         
         String message="<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n" +
 "    <soapenv:Header>\n" +
@@ -46,13 +46,13 @@ public class SoapClient {
 "                       xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\"\n" +
 "                       xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\">\n" +
 "            <wsse:UsernameToken wsu:Id=\"UsernameToken-1\">\n" +
-"                <wsse:Username>GWUMDev</wsse:Username>\n" +
-"                <wsse:Password Type=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\">19b@+M@n39</wsse:Password>\n" +
+"                <wsse:Username>john</wsse:Username>\n" +
+"                <wsse:Password Type=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\">doe</wsse:Password>\n" +
 "            </wsse:UsernameToken>\n" +
 "        </wsse:Security>\n" +
 "    </soapenv:Header>\n" +
 "    <soapenv:Body>\n" +
-"      <processRequest xmlns=\"http://integration.webservices.firstbest.com/\">\n" +
+"      <processRequest xmlns=\"http://integration.peitron.com/\">\n" +
 "         <SubmissionUpdate xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"SubmissionUpdate.xsd\">\n" +
 "         </SubmissionUpdate>\n" +
 "      </processRequest>\n" +
@@ -90,12 +90,12 @@ public class SoapClient {
  
                 SOAPElement username =
                         usernameToken.addChildElement("Username", "wsse");
-                username.addTextNode("GWUMDev");
+                username.addTextNode("username");
  
                 SOAPElement password =
                         usernameToken.addChildElement("Password", "wsse");
                 password.setAttribute("Type", "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText");
-            	password.addTextNode("19b@+M@n39");
+            	password.addTextNode("password");
         
         SOAPBody body=envelope.getBody();
         body.appendChild();
